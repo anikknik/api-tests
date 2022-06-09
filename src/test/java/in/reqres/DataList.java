@@ -4,6 +4,7 @@ public class DataList {
 
     public static String
             loginUrl = "/api/login",
+            listUsers = "api/users?page=2",
             usersUrl = "/api/users",
             users2Url = "/api/users/2",
             createUserBody = "{\"name\": \"morpheus\",     \"job\": \"leader\" }",

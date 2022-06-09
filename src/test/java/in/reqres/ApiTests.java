@@ -14,10 +14,11 @@ public class ApiTests extends TestBase {
     void getUsers() {
         given()
                 .when()
-                .get(usersUrl)
+                .get(listUsers)
                 .then()
                 .log().body()
-                .body("page", is(1))
+                .statusCode(200)
+                .body("page", is(2))
                 .body("per_page", is(6))
                 .body("total", is(12))
                 .body("total_pages", is(2));

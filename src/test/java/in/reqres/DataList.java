@@ -12,6 +12,5 @@ public class DataList {
             loginBody = "{ \"email\": \"eve.holt@reqres.in\", " +
                     "\"password\": \"cityslicka\" }",
             missingPasswordBody = "{ \"email\": \"eve.holt@reqres.in\"}",
-            token = "QpwL5tke4Pnpja7X4",
             error = "Missing password";
 }

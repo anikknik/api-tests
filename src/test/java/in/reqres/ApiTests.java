@@ -7,6 +7,7 @@ import static org.hamcrest.Matchers.is;
 import static io.restassured.http.ContentType.JSON;
 
 import static in.reqres.DataList.*;
+import static org.hamcrest.Matchers.notNullValue;
 
 public class ApiTests extends TestBase {
 
@@ -65,7 +66,7 @@ public class ApiTests extends TestBase {
                 .log().status()
                 .log().body()
                 .statusCode(200)
-                .body("token", is(token));
+                .body("token", is(notNullValue()));
     }
 
     @Test

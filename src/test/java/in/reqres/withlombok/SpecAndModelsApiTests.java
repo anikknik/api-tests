@@ -24,9 +24,9 @@ public class SpecAndModelsApiTests {
     public void getSingleUser() {
         given()
                 .spec(request)
-        .when()
+                .when()
                 .get("/users/2")
-        .then()
+                .then()
                 .spec(responseSpec)
                 .extract().response();
     }
@@ -35,9 +35,9 @@ public class SpecAndModelsApiTests {
     void userNotFound() {
         given()
                 .spec(request)
-        .when()
+                .when()
                 .get("/users/23")
-        .then()
+                .then()
                 .spec(response404)
                 .log().body()
                 .body(is("{}"));
@@ -48,7 +48,7 @@ public class SpecAndModelsApiTests {
         given()
                 .spec(request)
                 .get("/unknown/2")
-        .then()
+                .then()
                 .spec(responseSpec)
                 .log().body()
                 .extract().response();
@@ -56,13 +56,12 @@ public class SpecAndModelsApiTests {
 
     @Test
     void createUser() {
-        UserRes data =
-        given()
+        UserRes data = given()
                 .spec(request)
                 .body(body)
-        .when()
+                .when()
                 .post("/users")
-        .then()
+                .then()
                 .spec(response201)
                 .extract().as(UserRes.class);
         assertEquals(name, data.getName());
@@ -73,9 +72,9 @@ public class SpecAndModelsApiTests {
     void deleteUser() {
         given()
                 .spec(request)
-        .when()
+                .when()
                 .delete("/users/2")
-        .then()
+                .then()
                 .spec(response204);
     }
 
@@ -84,9 +83,9 @@ public class SpecAndModelsApiTests {
         given()
                 .spec(request)
                 .body(body2)
-        .when()
+                .when()
                 .post("/register")
-        .then()
+                .then()
                 .spec(response400);
     }
 
@@ -95,9 +94,9 @@ public class SpecAndModelsApiTests {
         // @formatter:off
         given()
                 .spec(request)
-        .when()
+                .when()
                 .get("/users")
-        .then()
+                .then()
                 .log().body()
                 .body("data.findAll{it.email =~/.*?@reqres.in/}.email.flatten()",
                         hasItem("eve.holt@reqres.in"));
@@ -109,13 +108,12 @@ public class SpecAndModelsApiTests {
         UserReq requestCreate = new UserReq();
         requestCreate.setJob("leader");
         requestCreate.setName("morpheus");
-        UserRes data =
-        given()
+        UserRes data = given()
                 .spec(request)
                 .body(requestCreate)
-        .when()
+                .when()
                 .post("/users")
-        .then()
+                .then()
                 .spec(response201)
                 .extract().as(UserRes.class);
         assertEquals(name, data.getName());
